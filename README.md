@@ -37,41 +37,45 @@ CI/CD workflow
 Initial steps:
 - Create a project folder and go insde the folder 
 using below commands
-mkdir folder name
-cd folder name
+
+-mkdir folder name
+-cd folder name
 
 - create a python file 
-touch folder name
+-touch folder name
 
 Initialize Git
-git init
-git add .
-git commit -m "Initial commit"
+
+-git init
+-git add .
+-git commit -m "Initial commit"
 
 Create a Git hub repo and connect GitHub Repo
 
-git branch -M main
-git remote add origin  https://github.com/USERNAME/
-Python_Monitoring_application.git
-git push -u origin main
+-git branch -M main
+-git remote add origin  link .git
+-git push -u origin main
 
 How to setup AWS services
--Launch Ec2 
--Install docker on EC2
-Sudo apt update 
-sudo apt install docker.io -y
+
+Launch Ec2 
+
+Install docker on EC2
+
+-Sudo apt update 
+-sudo apt install docker.io -y
 
 Attached cloud formation template to automatically 
 create AWS Services
 
 push code to GitHub
-git add .
-git commit -m "Project update"
-git push
+-git add .
+-git commit -m "Project update"
+-git push
 
 CI/CD Setup
-- create GitHub actions workflow
-.github/workflows/deploy.yml
+ create GitHub actions workflow
+-.github/workflows/deploy.yml
 
 GitHub Actions flow
 What does a pipeline do , it pulls the code and build 
