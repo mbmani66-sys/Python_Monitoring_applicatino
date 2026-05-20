@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple EC2 setup for Python Monitoring App (Docker + CloudWatch ready)
+
+Resources:
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH and App port
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+
+        - IpProtocol: tcp
+          FromPort: 5000
+          ToPort: 5000
+          CidrIp: 0.0.0.0/0
+
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c02fb55956c7d316   # Ubuntu AMI (update if needed)
+      SecurityGroupIds:
+        - !Ref MySecurityGroup
+
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          apt update -y
+          apt install docker.io -y
+          systemctl start docker
+          systemctl enable docker
+          usermod -aG docker ubuntu
