@@ -33,3 +33,7 @@ CI/CD workflow
 - Docker image is pushed to DockerHub
 - AWS EC2 server pulls latest image
 - Container redeploys automatically
+
+## Architecture Diagram
+
+![AWS Architecture](Archi.png)
